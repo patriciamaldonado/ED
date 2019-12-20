@@ -112,12 +112,11 @@ conjunto.clear();
   return myset;
 }
 
-// // int Conjuntoletras::scorepalabra(char letra){
-// // int score = 0
-// //
-// // }
-//
-//
+int Conjuntoletras::scorepalabra(char letra){
+int score = 0;
+
+}
+
 void  Conjuntoletras::setletra(Letra l){
 
 conjunto.push_back(l);
@@ -125,15 +124,6 @@ conjunto.push_back(l);
 }
 
 
-// ostream &operator<<(ostream &os,Conjuntoletras &s)
-// {
-//   set<Letra>::iterator it;
-//
-//   for(it=s.conjunto.begin();it!=s.conjunto.end();++it){
-//     os << (*it).getletra() << " ";
-//   }
-//  return os;
-// }
 int  Conjuntoletras::size() const{
   return conjunto.size();
 }
