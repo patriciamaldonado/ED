@@ -35,37 +35,55 @@ class Diccionario{
 
 	void insertar(const string &palabra);
 	//
-	// bool Esta(string palabra);
-	// /**
-	// @brief Lee de un flujo de entrada un diccionario
-	// @param is:flujo de entrada
-	// @param D: el objeto donde se realiza la lectura.
-	// @return el flujo de entrada
-	// **/
-	// friend
-	// istream & operator>>(istream & is,Diccionario &D);
-	// /**
-	// @brief Escribe en un flujo de salida un diccionario
-	// @param os:flujo de salida
-	// @param D: el objeto diccionario que se escribe
-	// @return el flujo de salida
-	// **/
-	// friend ostream & operator<<(ostream & os, const Diccionario	&D);
+	bool Esta(string palabra);
+	/**
+	@brief Lee de un flujo de entrada un diccionario
+	@param is:flujo de entrada
+	@param D: el objeto donde se realiza la lectura.
+	@return el flujo de entrada
+	**/
+	friend
+	istream & operator>>(istream & is,Diccionario &D);
+	/**
+	@brief Escribe en un flujo de salida un diccionario
+	@param os:flujo de salida
+	@param D: el objeto diccionario que se escribe
+	@return el flujo de salida
+	**/
+	friend ostream & operator<<(ostream & os, Diccionario	&D);
+	int FrecLetra(const char & letra);
 
- };
 	class iterator{
+
 	private:
 	set<string>::iterator it;
+
 	public:
-	iterator();
-	string operator *();
-	iterator & operator ++();
-	bool operator ==(const iterator &i);
-	bool operator !=(const iterator &i);
+	iterator(){};
+	string operator *(){
+	 return *it;
+	}
+	iterator & operator ++(){
+		++it;
+	}
+	bool operator ==(const iterator &i){
+		return i.it==it;
+	}
+	bool operator !=(const iterator &i){
+		 return i.it!=it;
+	}
 	friend class Diccionario;
 	};
 
-set<string>::iterator begin();
-set<string>::iterator end();
-
+	iterator begin(){
+			iterator i;
+			i.it=datos.begin();
+			return i;
+}
+	iterator end(){
+			iterator i;
+			i.it=datos.end();
+			return i;
+}
+ };
 #endif
