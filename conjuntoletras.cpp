@@ -156,45 +156,45 @@ char letra;
     return is;
 }
 
-
-// main de prueba de Letra y Conjuntoletras
-int main(int argc, char const *argv[])
-{
-  setlocale(LC_CTYPE,"Spanish");
-  Letra a('e');
-  cout << a.getletra() << endl;
-
-  Letra b('e');
-  if (a == b)
-  {
-    cout << "Son iguales" << endl;
-  }
-
-  Letra c('c');
-  Conjuntoletras con;
-  con.setletra(a);
-  con.setletra(c);
-  cout << "salida: " << endl;
-  cout << con << endl;
-
-
-
-    ifstream f1 (argv[1]);
-    if (!f1){
-     cout<<"No puedo abrir el fichero "<<argv[1]<<endl;
-     return 0;
-    }
-
-  // Solucionar problemas locales no lee la ñ
-  // Solucionar doble zz al final del fichero
-  Conjuntoletras con2;
-  f1 >> con2;
-  cout << con2 << endl;
-
-
-
-
-}
+//
+// // main de prueba de Letra y Conjuntoletras
+// int main(int argc, char const *argv[])
+// {
+//   setlocale(LC_CTYPE,"Spanish");
+//   Letra a('e');
+//   cout << a.getletra() << endl;
+//
+//   Letra b('e');
+//   if (a == b)
+//   {
+//     cout << "Son iguales" << endl;
+//   }
+//
+//   Letra c('c');
+//   Conjuntoletras con;
+//   con.setletra(a);
+//   con.setletra(c);
+//   cout << "salida: " << endl;
+//   cout << con << endl;
+//
+//
+//
+//     ifstream f1 (argv[1]);
+//     if (!f1){
+//      cout<<"No puedo abrir el fichero "<<argv[1]<<endl;
+//      return 0;
+//     }
+//
+//   // Solucionar problemas locales no lee la ñ
+//   // Solucionar doble zz al final del fichero
+//   Conjuntoletras con2;
+//   f1 >> con2;
+//   cout << con2 << endl;
+//
+//
+//
+//
+// }
 
 
 

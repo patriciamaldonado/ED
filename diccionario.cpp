@@ -112,53 +112,53 @@ bool Diccionario::Esta(string palabra){
 
 //frecuencia cada 3 letras
 
-int main(int argc, char const *argv[]) {
-
-  Diccionario midiccionario;
-  midiccionario.insertar("patata");
-  midiccionario.insertar("hola");
-  cout << midiccionario.size() << endl;
-
-  vector<string> midic;
-
-  midic = midiccionario.PalabrasLongitud(6);
-
-  for (int i = 0; i < midic.size(); i++) {
-    cout << midic[i] << endl;
-  }
-
-  ifstream f1 (argv[1]);
-  if (!f1){
-   cout<<"No puedo abrir el fichero "<<argv[1]<<endl;
-   return 0;
-  }
-
-  f1 >> midiccionario;
-
-
-  cout << "Elementos de diccionario: " << midiccionario.size() << endl;
-
-  cout << "MIDICCIONARIO: "<< endl<< midiccionario << endl;
-
-  if(midiccionario.Esta("nueces")){
-    cout << "Esta la palabra nueces " << endl;
-  }
-  else{
-    cout << "No está la palabra nueces " << endl;
-  }
-
-
-  if(midiccionario.Esta("subrepticiamente")){
-    cout << "Esta la palabra subrepticiamente " << endl;
-  }
-  else{
-    cout << "No está la palabra subrepticiamente " << endl;
-  }
-
-
-cout << midiccionario.FrecLetra('x');
-
-}
-
-
+// int main(int argc, char const *argv[]) {
+//
+//   Diccionario midiccionario;
+//   midiccionario.insertar("patata");
+//   midiccionario.insertar("hola");
+//   cout << midiccionario.size() << endl;
+//
+//   vector<string> midic;
+//
+//   midic = midiccionario.PalabrasLongitud(6);
+//
+//   for (int i = 0; i < midic.size(); i++) {
+//     cout << midic[i] << endl;
+//   }
+//
+//   ifstream f1 (argv[1]);
+//   if (!f1){
+//    cout<<"No puedo abrir el fichero "<<argv[1]<<endl;
+//    return 0;
+//   }
+//
+//   f1 >> midiccionario;
+//
+//
+//   cout << "Elementos de diccionario: " << midiccionario.size() << endl;
+//
+//   cout << "MIDICCIONARIO: "<< endl<< midiccionario << endl;
+//
+//   if(midiccionario.Esta("nueces")){
+//     cout << "Esta la palabra nueces " << endl;
+//   }
+//   else{
+//     cout << "No está la palabra nueces " << endl;
+//   }
+//
+//
+//   if(midiccionario.Esta("subrepticiamente")){
+//     cout << "Esta la palabra subrepticiamente " << endl;
+//   }
+//   else{
+//     cout << "No está la palabra subrepticiamente " << endl;
+//   }
+//
+//
+// cout << midiccionario.FrecLetra('x');
+//
+// }
+//
+//
 
