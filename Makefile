@@ -18,21 +18,29 @@ documentacion:
 $(BIN)/cantidadletras : $(OBJ)/conjuntoletras.o $(OBJ)/cantidadletras.o  $(OBJ)/diccionario.o
 	$(CXX) -o $(BIN)/cantidadletras $(OBJ)/conjuntoletras.o $(OBJ)/cantidadletras.o  $(OBJ)/diccionario.o
 
-$(OBJ)/cantidadletras.o : 
+$(BIN)/bolsadeletras : $(OBJ)/conjuntoletras.o $(OBJ)/bolsadeletras.o 
+	$(CXX) -o $(BIN)/bolsadeletras $(OBJ)/conjuntoletras.o $(OBJ)/bolsadeletras.o  
+
+$(OBJ)/cantidadletras.o : $(SRC)/cantidadletras.cpp
 	$(CXX) $(CPPFLAGS) -I./$(INC) -c -o $(OBJ)/cantidadletras.o $(SRC)/cantidadletras.cpp
 
-$(OBJ)/conjuntoletras.o : $(INC)/conjuntoletras.h
+$(OBJ)/conjuntoletras.o : $(INC)/conjuntoletras.h $(SRC)/conjuntoletras.cpp
 	$(CXX) $(CPPFLAGS) -I./$(INC) -c -o $(OBJ)/conjuntoletras.o $(SRC)/conjuntoletras.cpp
 
-$(OBJ)/diccionario.o : 
+$(OBJ)/diccionario.o : $(SRC)/diccionario.cpp
 	$(CXX) $(CPPFLAGS) -I./$(INC) -c -o $(OBJ)/diccionario.o $(SRC)/diccionario.cpp
+
+$(OBJ)/bolsadeletras.o : $(SRC)/bolsadeletras.cpp
+	$(CXX) $(CPPFLAGS) -I./$(INC) -c -o $(OBJ)/bolsadeletras.o $(SRC)/bolsadeletras.cpp
 
 
 # ************ Limpieza ************
 run : all
-	./$(BIN)/cantidadletras diccionario1.txt letras.txt a
+	./$(BIN)/cantidadletras diccionario1.txt letras.txt salida.txt
 
-clean :
+bolsa: $(BIN)/bolsadeletras
+
+clean : mrproper
 	echo "Limpiando..."
 	rm -f $(OBJ)/*.o
 

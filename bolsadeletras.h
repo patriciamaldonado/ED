@@ -16,7 +16,8 @@ public:
 
 Bolsaletras();
 // Bolsaletras(Bolsaletras const & otra);
-void setletraBolsa(const char l); 
+Bolsaletras(int elemAleatorios,Conjuntoletras &conjunto);
+void setletraBolsa(const char l);
 char getletraBolsa(const int x) const;
 char getletraEnjuego(const int x) const;
 

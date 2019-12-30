@@ -104,6 +104,8 @@ Conjuntoletras::Conjuntoletras()
   //limpiamos en el constructor por defecto
 }
 
+
+
 vector<Letra> Conjuntoletras::getletras() const
 {
 

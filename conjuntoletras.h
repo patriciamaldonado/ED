@@ -20,7 +20,7 @@ public:
 
 	int  score() const;
 	int  repeticiones() const;
-	void setletra(const char l);
+	void setletra(char l);
 	char getletra() const;
 	bool operator==(Letra l)const;
 

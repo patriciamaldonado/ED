@@ -2,6 +2,8 @@
 #include <stdlib.h> /* srand, rand */
 #include <time.h>
 #include "bolsadeletras.h"
+#include "conjuntoletras.h"
+#include <fstream>
 
 Bolsaletras::Bolsaletras()
 {
@@ -12,6 +14,26 @@ Bolsaletras::Bolsaletras()
 // Bolsaletras::Bolsaletras(Bolsaletras const & otra){
 
 // }
+
+Bolsaletras::Bolsaletras(int elemAleatorios,Conjuntoletras &conjunto)
+{
+    bolsa.clear();
+    letrasenjuego.clear();
+    for (int i = 0; i < conjunto.size(); i++) {
+      bolsa.push_back(conjunto[i].getletra());
+    }
+
+    srand(time(0));
+    for (int i = 0; i < elemAleatorios; i++)
+    {
+        int aleatorio = rand() % bolsa.size();
+        char l = tolower(bolsa[aleatorio]);
+        letrasenjuego.push_back(l);
+    }
+
+}
+
+
 
 void Bolsaletras::setletraBolsa(const char l)
 {
@@ -46,17 +68,40 @@ char Bolsaletras::getletraEnjuego(const int x) const{
 
 int main(int argc, char const *argv[])
 {
+    ifstream f1 (argv[1]);
+    if (!f1){
+     cout<<"No puedo abrir el fichero "<<argv[1]<<endl;
+     return 0;
+    }
     char michar = 'v';
+    Conjuntoletras con;
+    f1 >> con;
     Bolsaletras mibolsa;
+    Bolsaletras bolsa2(5,con);
+
+
     mibolsa.setletraBolsa(michar);
-    cout << mibolsa.getletraBolsa(0) << endl;
+    mibolsa.setletraBolsa('j');
+    mibolsa.setletraBolsa('a');
+    mibolsa.setletraBolsa('i');
+    mibolsa.setletraBolsa('c');
+    //cout << mibolsa.getletraBolsa(0) << endl;
     mibolsa.letrasAleatorias(4);
-    for (int i = 0; i < mibolsa.sizeVectorenJuego(); i++)
+    // for (int i = 0; i < mibolsa.sizeVectorenJuego(); i++)
+    // {
+    //     cout <<  mibolsa.getletraEnjuego(i) << " ";
+    // }
+    // cout << endl;
+
+
+
+    cout <<  "Letras a jugar obtenidas de un conjunto" << endl;
+    for (int i = 0; i < bolsa2.sizeVectorenJuego(); i++)
     {
-        cout <<  mibolsa.getletraEnjuego(i) << " ";
+        cout  << bolsa2.getletraEnjuego(i) << " ";
     }
     cout << endl;
-    
+
 
     return 0;
 }

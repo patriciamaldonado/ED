@@ -59,5 +59,12 @@ for (int i = 0; i < con.size(); i++) {
     cout << "La letra: "<< con[i].getletra() << " se repite " << frecletraActual << " tiene estos puntos: " << calculaPuntos(frecletraActual,numtotalLetras) <<endl;
 }
 
+for (int i = 0; i < con.size(); i++) {
+
+    frecletraActual = midic.FrecLetra(con[i].getletra());
+    fsalida << con[i].getletra() << " " << frecletraActual << " " << calculaPuntos(frecletraActual,numtotalLetras) <<endl;
+
+}
+
 
 }
