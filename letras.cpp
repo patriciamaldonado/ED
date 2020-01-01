@@ -5,6 +5,7 @@
 #include <string>
 #include <cstring>
 #include <algorithm>
+#include <vector>
 #include "diccionario.h"
 #include "bolsadeletras.h"
 #include "conjuntoletras.h"
@@ -15,29 +16,19 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
 
-  char anagrama[13];
-  cin>>anagrama;
-  int len = strlen(anagrama);
-  sort(anagrama, anagrama+len);
-  do {
-  cout << anagrama << endl;
-  } while (next_permutation(anagrama, anagrama+len));
-  return 0;
-
-
   if(argc != 5){
     cout<<"Ejecución: letras diccionario1.txt salida.txt numerodeLetras8 modalidad(L o P)"<<endl;
        return 0;
   }
 
   ifstream fdiccionario (argv[1]);
-  if (!f1){
+  if (!fdiccionario){
    cout<<"No puedo abrir el fichero  "<<argv[1]<<endl;
    return 0;
   }
 
   ifstream fsalidatxt (argv[2]);
-  if (!f2){
+  if (!fsalidatxt){
    cout<<"No puedo abrir el fichero "<<argv[2]<<endl;
    return 0;
   }
@@ -48,10 +39,48 @@ int main(int argc, char const *argv[]) {
   // que tiene un formato diferente a letras.txt
   //OPCION B usar el operador de entrada de bolsa de letras y leer
   // de ahi salidatxt
-  //fsalidatxt >> conjunto;
+
   Conjuntoletras con;
-  Bolsaletras mibolsa;
-  Bolsaletras bolsa2(5,con);
+  fsalidatxt >> con;
+  cout << con << endl;
+  int longitud = atoi(argv[3]);
+  Bolsaletras mibolsa(longitud,con); // genera las letras aleatorias
+  string palabraJugador;
+  char p[mibolsa.sizeVectorenJuego()];
+
+
+
+
+  cout << "Dime tu palabra: ";
+  cin >> palabraJugador;
+  bool esta = midiccionario.Esta(palabraJugador);
+  if(esta){
+    cout << "La palabra está en el diccionario"<<endl;
+  }
+  else {
+    cout << "La palabra no está en el diccionario"<<endl;
+
+  }
+
+for (int i = 0; i < mibolsa.sizeVectorenJuego(); i++) {
+  p[i] = mibolsa.getletraEnjuego(i);
+  cout << "sarandongaaaaaaaaa " <<mibolsa.getletraEnjuego(i) <<endl;
+}
+
+
+
+//cin>>p;
+int len = strlen(p);
+sort(p, p+len);
+do {
+//if(Diccionario::Esta(p)){
+cout << p << endl;
+//}
+} while (next_permutation(p, p+len));
+
+
+
+
 
 
 

@@ -2,8 +2,9 @@
 #include <set>
 #include <vector>
 #include <fstream>
+#include <cstring>
+#include <algorithm>
 #include "diccionario.h"
-
 using namespace std;
 
 
@@ -109,6 +110,26 @@ bool Diccionario::Esta(string palabra){
     return false;
   }
 }
+  void palabrasPosibles(vector<char> &p){
+
+
+    char palabraPosible[p.size()];
+    for (int i = 0; i < p.size(); i++) {
+      palabraPosible[i] = p[i];
+    }
+    //cin>>palabraPosible;
+    int len = strlen(palabraPosible);
+    sort(palabraPosible, palabraPosible+len);
+    do {
+    //if(Diccionario::Esta(palabraPosible)){
+    cout << palabraPosible << endl;
+    //}
+    } while (next_permutation(palabraPosible, palabraPosible+len));
+
+
+  }
+
+
 
 //frecuencia cada 3 letras
 

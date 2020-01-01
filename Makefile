@@ -15,6 +15,13 @@ documentacion:
 	
 # ************ Compilación de módulos ************
 
+
+$(BIN)/letras : $(OBJ)/conjuntoletras.o $(OBJ)/letras.o  $(OBJ)/diccionario.o  $(OBJ)/bolsadeletras.o 
+	$(CXX) -o $(BIN)/letras $(OBJ)/conjuntoletras.o $(OBJ)/letras.o  $(OBJ)/diccionario.o  $(OBJ)/bolsadeletras.o 
+
+$(OBJ)/letras.o : $(SRC)/letras.cpp
+	$(CXX) $(CPPFLAGS) -I./$(INC) -c -o $(OBJ)/letras.o $(SRC)/letras.cpp
+
 $(BIN)/cantidadletras : $(OBJ)/conjuntoletras.o $(OBJ)/cantidadletras.o  $(OBJ)/diccionario.o
 	$(CXX) -o $(BIN)/cantidadletras $(OBJ)/conjuntoletras.o $(OBJ)/cantidadletras.o  $(OBJ)/diccionario.o
 
@@ -39,6 +46,8 @@ run : all
 	./$(BIN)/cantidadletras diccionario1.txt letras.txt salida.txt
 
 bolsa: $(BIN)/bolsadeletras
+
+letra: $(BIN)/letras
 
 clean : mrproper
 	echo "Limpiando..."

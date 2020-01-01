@@ -52,6 +52,7 @@ class Diccionario{
 	**/
 	friend ostream & operator<<(ostream & os, Diccionario	&D);
 	int FrecLetra(const char & letra);
+  void palabrasPosibles(vector<char> &p);
 
 	class iterator{
 

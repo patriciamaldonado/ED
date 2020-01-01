@@ -147,11 +147,16 @@ ostream &operator<<(ostream &os, Conjuntoletras const &conjunto)
 
 istream & operator>>(istream & is, Conjuntoletras &conjunto){
 
-char letra;
+  char letra;
+  int repe;
+  int score;
+
 
     while(!is.eof()){
         is >> letra;
-        Letra l(tolower(letra));
+        is >> repe;
+        is >> score;
+        Letra l(tolower(letra),repe,score);
         conjunto.setletra(l);
     }
 

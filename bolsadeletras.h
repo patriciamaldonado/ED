@@ -25,6 +25,10 @@ void letrasAleatorias(const int &numletras);
 // vector<string> posibilidades(const Diccionario & D); //palabras del diccionario que se pueden formar con esas letras
 // vector<string> mayorlongitud(); // palabras con mayor longitud
 int sizeVectorenJuego();
+int sizeVectorBolsa() const;
+friend ostream & operator<<(ostream & os, Bolsaletras const &b);
+// friend istream & operator>>(istream & is, Bolsaletras &b);
+
 };
 
 
