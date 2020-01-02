@@ -25,7 +25,6 @@ Bolsaletras::Bolsaletras(int elemAleatorios,Conjuntoletras &conjunto)
     for (int i = 0; i < conjunto.size(); i++) {
       bolsa.push_back(conjunto[i].getletra());
     }
-
     srand(time(0));
     for (int i = 0; i < elemAleatorios; i++)
     {

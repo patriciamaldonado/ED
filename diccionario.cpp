@@ -110,21 +110,58 @@ bool Diccionario::Esta(string palabra){
     return false;
   }
 }
-  void palabrasPosibles(vector<char> &p){
 
-
-    char palabraPosible[p.size()];
-    for (int i = 0; i < p.size(); i++) {
-      palabraPosible[i] = p[i];
+bool Diccionario::ifIterativo(int *indexs,int n,int ref){
+    bool r,tmp;
+    if(n==1){
+        r=indexs[n-1]!=ref;
+    }else{
+        tmp=ifIterativo(indexs,n-1,ref);
+        r=indexs[n-1]!=ref && tmp;
     }
-    //cin>>palabraPosible;
-    int len = strlen(palabraPosible);
-    sort(palabraPosible, palabraPosible+len);
-    do {
-    //if(Diccionario::Esta(palabraPosible)){
-    cout << palabraPosible << endl;
-    //}
-    } while (next_permutation(palabraPosible, palabraPosible+len));
+    return r;
+}
+
+
+void Diccionario::variacionSR(char datos[],int n, int r,int *index=NULL,int i=0){
+    if(index==NULL){
+        index=new int[r];
+    }
+    if(i<r){
+        for(int x=0; x<n; x++){
+            index[i]=x;
+            if(i>=1){
+                if(ifIterativo(index,i,x)){
+                    variacionSR(datos,n,r,index,i+1);
+                }
+            }else{
+                variacionSR(datos,n,r,index,i+1);
+            }
+        }
+    }else{
+        //cout<<"\n";
+        string palabra;
+        for(int j=0; j<r; j++){
+            palabra.push_back(datos[index[j]]);
+            //cout<<datos[index[j]];// AQUI TENEMOS LAS POSIBLES PALABRAS FORMADAS
+        }
+        // cout<< "Las palabras encontradas son: " <<endl;
+        if(Diccionario::Esta(palabra))
+        {
+            cout << "Palabra en diccionario: " << palabra <<endl;
+        }
+
+    }
+
+}
+
+//void Diccionario::variacionSR(char datos[],int n, int r,int *index=NULL,int i=0){
+
+  void Diccionario::palabrasPosibles(char datos[],int n){
+
+    for (size_t i = 0; i < n; i++) {
+            variacionSR(datos,n,i+1);
+        }
 
 
   }

@@ -10,6 +10,10 @@ class Diccionario{
 
 	private:
 	set<string> datos;
+
+	bool ifIterativo(int *indexs,int n,int ref);
+	void variacionSR(char datos[],int n, int r,int *index,int i);
+
 	public:
 	/**
 	@brief Construye un diccionario vacío.
@@ -52,7 +56,8 @@ class Diccionario{
 	**/
 	friend ostream & operator<<(ostream & os, Diccionario	&D);
 	int FrecLetra(const char & letra);
-  void palabrasPosibles(vector<char> &p);
+  void palabrasPosibles(char datos[],int n);
+	// Hacer una funcion damepuntuacion(string palabra) que compruebe la puntación de la palabra
 
 	class iterator{
 

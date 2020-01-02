@@ -51,34 +51,27 @@ int main(int argc, char const *argv[]) {
 
 
 
+  cout << "Tus letras para jugar son: ";
+  for (int i = 0; i < mibolsa.sizeVectorenJuego(); i++) {
+    p[i] = mibolsa.getletraEnjuego(i);
+    cout  <<p[i] <<" ";
+  }
+  cout << endl;
+
   cout << "Dime tu palabra: ";
   cin >> palabraJugador;
   bool esta = midiccionario.Esta(palabraJugador);
   if(esta){
-    cout << "La palabra está en el diccionario"<<endl;
+    cout << "La palabra "<< palabraJugador <<" está en el diccionario"<<endl;
   }
   else {
-    cout << "La palabra no está en el diccionario"<<endl;
+    cout << "La palabra "<< palabraJugador << " no está en el diccionario"<<endl;
 
   }
-
-for (int i = 0; i < mibolsa.sizeVectorenJuego(); i++) {
-  p[i] = mibolsa.getletraEnjuego(i);
-  cout << "sarandongaaaaaaaaa " <<mibolsa.getletraEnjuego(i) <<endl;
-}
+  cout << endl;
 
 
-
-//cin>>p;
-int len = strlen(p);
-sort(p, p+len);
-do {
-//if(Diccionario::Esta(p)){
-cout << p << endl;
-//}
-} while (next_permutation(p, p+len));
-
-
+midiccionario.palabrasPosibles(p,mibolsa.sizeVectorenJuego());
 
 
 

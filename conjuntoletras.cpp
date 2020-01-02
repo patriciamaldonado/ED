@@ -90,6 +90,14 @@ char Letra::getletra() const
 {
   return letra;
 }
+int Letra::getpuntos() const
+{
+  return puntos;
+}
+int Letra::getrepe() const
+{
+  return repe;
+}
 
 bool Letra::operator==(Letra l) const
 {
@@ -156,7 +164,7 @@ istream & operator>>(istream & is, Conjuntoletras &conjunto){
         is >> letra;
         is >> repe;
         is >> score;
-        Letra l(tolower(letra),repe,score);
+        Letra l(tolower(letra),score,repe);
         conjunto.setletra(l);
     }
 
@@ -164,7 +172,7 @@ istream & operator>>(istream & is, Conjuntoletras &conjunto){
 }
 
 //
-// // main de prueba de Letra y Conjuntoletras
+// main de prueba de Letra y Conjuntoletras
 // int main(int argc, char const *argv[])
 // {
 //   setlocale(LC_CTYPE,"Spanish");
@@ -197,11 +205,14 @@ istream & operator>>(istream & is, Conjuntoletras &conjunto){
 //   Conjuntoletras con2;
 //   f1 >> con2;
 //   cout << con2 << endl;
+//   for (size_t i = 0; i < con2.size(); i++) {
+//     cout << "letra " << con2[i].getletra() << " repe " << con2[i].getrepe()<< " puntos " << con2[i].getpuntos() <<endl;
+//   }
 //
 //
 //
 //
 // }
-
+//
 
 

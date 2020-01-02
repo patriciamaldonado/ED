@@ -22,6 +22,8 @@ public:
 	int  repeticiones() const;
 	void setletra(char l);
 	char getletra() const;
+	int getpuntos() const;
+	int getrepe() const;
 	bool operator==(Letra l)const;
 
 //operadores de lectura y escritura, que lea los tres campos y pueda activar la funcion
