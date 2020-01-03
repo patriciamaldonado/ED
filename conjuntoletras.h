@@ -50,12 +50,13 @@ Conjuntoletras();
 
 
 vector<Letra> getletras() const;
-int scorepalabra(char letra);
+int scoreletra(char letra);
 void setletra(Letra l);
 int size() const;
 Letra operator[] (const int x) const;
 friend ostream & operator<<(ostream & os, Conjuntoletras const &conjunto);
 friend istream & operator>>(istream & is, Conjuntoletras &conjunto);
+
 
 
 

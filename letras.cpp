@@ -12,6 +12,20 @@
 
 using namespace std;
 
+int puntuaPalabra(string palabra, Conjuntoletras con){
+  int puntosTotales = 0;
+  for(unsigned int i = 0; i<palabra.length(); i++) {
+      char c = palabra[i];
+      puntosTotales += con.scoreletra(c);
+  }
+  return puntosTotales;
+}
+
+//
+string palabraMasLarga(vector<string> palabras){
+   // palabras[palabras.size()-1];
+   return palabras[palabras.size()-1];
+}
 
 
 int main(int argc, char const *argv[]) {
@@ -62,7 +76,8 @@ int main(int argc, char const *argv[]) {
   cin >> palabraJugador;
   bool esta = midiccionario.Esta(palabraJugador);
   if(esta){
-    cout << "La palabra "<< palabraJugador <<" está en el diccionario"<<endl;
+    cout << "La palabra "<< palabraJugador <<" está en el diccionario"<< "con puntuacion " << puntuaPalabra(palabraJugador,con)<<endl;
+
   }
   else {
     cout << "La palabra "<< palabraJugador << " no está en el diccionario"<<endl;
@@ -72,8 +87,13 @@ int main(int argc, char const *argv[]) {
 
 
 midiccionario.palabrasPosibles(p,mibolsa.sizeVectorenJuego());
+vector<string> misPalabras= midiccionario.getPalabrasFormadas();
 
+for (size_t i = 0; i < misPalabras.size(); i++) {
+    cout << misPalabras[i] << " tiene esta puntuacion " << puntuaPalabra(misPalabras[i],con)<<endl;
+}
 
+cout << "La palabra más larga es " << palabraMasLarga(misPalabras)  <<endl;
 
 
 

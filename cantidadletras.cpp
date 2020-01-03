@@ -7,12 +7,39 @@
 
 
 using namespace std;
-// ESTO HAY QUE HACERLO CON UN PATRON POR TROZOS COMO DIJO VALDIVIA
+
 float calculaPuntos(int frecletra, int letrasTotales){
-  float  puntos =  (1.0/(frecletra*1.0/letrasTotales*1.0));
+  float  puntos = 1;
+  int corte = letrasTotales/10;
+  if(frecletra < (corte)){
+        puntos = 10;
+  }else if (frecletra  < (corte*2)){
+        puntos = 9;
+  }else if (frecletra  < (corte*3)){
+        puntos = 8;
+  }else if (frecletra  < (corte*4)){
+        puntos = 7;
+  }else if (frecletra  < (corte*5)){
+        puntos = 6;
+  }else if (frecletra  < (corte*6)){
+        puntos = 5;
+  }else if (frecletra  < (corte*7)){
+        puntos = 4;
+  }else if (frecletra  < (corte*8)){
+        puntos = 3;
+  }else if (frecletra  < (corte*9)){
+        puntos = 2;
+  }
+  else{
+        puntos = 1;
+  }
+
   return puntos;
 
 }
+
+
+
 
 int main(int argc, char const *argv[]) {
 
@@ -41,30 +68,52 @@ int main(int argc, char const *argv[]) {
 
   f1 >> midic;
   cout << midic;
-  f2 >> con;
-  cout << con;
+  // f2 >> con;
+  // cout << con;
+
+
+// Leemos la letras de fichero letras.txt y lo metemos en un conjunto
+// Esto lo hacemos porque el operador entrada de conjunto esta hecho para que lea salida.txt
+    char letra;
+
+      while(!f2.eof()){
+          f2 >> letra;
+          Letra l(tolower(letra));
+          con.setletra(l);
+      }
+// Salida de la lectura de conjunto (muestra todas las letras leidas de letras.txt)
+for (size_t i = 0; i < con.size(); i++) {
+    cout  << con[i].getletra() <<endl;
+}
+
+
 
   int frecletraActual = 0;
-  int numtotalLetras = 0;
+  //int numtotalLetras = 0;
+  int frecletraMasRepetida = 0;
 
 for (int i = 0; i < con.size(); i++) {
   frecletraActual = midic.FrecLetra(con[i].getletra());
-  numtotalLetras+= frecletraActual;
+  if(frecletraActual > frecletraMasRepetida){
+    frecletraMasRepetida = frecletraActual;
+  }
 }
-cout <<  "Numero total de letras " << numtotalLetras <<endl;
+// cout <<  "Numero total de letras " << numtotalLetras <<endl;
 for (int i = 0; i < con.size(); i++) {
     frecletraActual = midic.FrecLetra(con[i].getletra());
     //cout << frecletraActual << "La letra es "<< con[i].getletra() << endl;
 
-    cout << "La letra: "<< con[i].getletra() << " se repite " << frecletraActual << " tiene estos puntos: " << calculaPuntos(frecletraActual,numtotalLetras) <<endl;
+    cout << "La letra: "<< con[i].getletra() << " se repite " << frecletraActual << " tiene estos puntos: " << calculaPuntos(frecletraActual,frecletraMasRepetida) <<endl;
 }
 
 for (int i = 0; i < con.size(); i++) {
 
     frecletraActual = midic.FrecLetra(con[i].getletra());
-    fsalida << con[i].getletra() << " " << frecletraActual << " " << calculaPuntos(frecletraActual,numtotalLetras) <<endl;
+    fsalida << con[i].getletra() << " " << frecletraActual << " " << calculaPuntos(frecletraActual,frecletraMasRepetida) <<endl;
 
 }
 
+// calculaPuntos(5,100);
+// calculaPuntos(90,100);
 
 }

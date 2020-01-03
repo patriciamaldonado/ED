@@ -55,7 +55,6 @@ string palabra;
 while(!is.eof()){
   is>>palabra;
   D.insertar(palabra);
-
 }
 
 return is;
@@ -123,6 +122,14 @@ bool Diccionario::ifIterativo(int *indexs,int n,int ref){
 }
 
 
+vector<string> Diccionario::getPalabrasFormadas(){
+  vector<string> vectorTemporal;
+  for (size_t i = 0; i < palabrasFormadas.size(); i++) {
+    vectorTemporal.push_back(palabrasFormadas[i]);
+  }
+  return vectorTemporal;
+}
+
 void Diccionario::variacionSR(char datos[],int n, int r,int *index=NULL,int i=0){
     if(index==NULL){
         index=new int[r];
@@ -148,7 +155,8 @@ void Diccionario::variacionSR(char datos[],int n, int r,int *index=NULL,int i=0)
         // cout<< "Las palabras encontradas son: " <<endl;
         if(Diccionario::Esta(palabra))
         {
-            cout << "Palabra en diccionario: " << palabra <<endl;
+            //cout << "Palabra en diccionario: " << palabra <<endl;
+            palabrasFormadas.push_back(palabra);
         }
 
     }

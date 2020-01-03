@@ -10,6 +10,7 @@ class Diccionario{
 
 	private:
 	set<string> datos;
+	vector<string> palabrasFormadas;
 
 	bool ifIterativo(int *indexs,int n,int ref);
 	void variacionSR(char datos[],int n, int r,int *index,int i);
@@ -58,6 +59,9 @@ class Diccionario{
 	int FrecLetra(const char & letra);
   void palabrasPosibles(char datos[],int n);
 	// Hacer una funcion damepuntuacion(string palabra) que compruebe la puntación de la palabra
+  // int puntuaPalabra(string palabra);
+	vector<string> getPalabrasFormadas();
+
 
 	class iterator{
 

@@ -122,9 +122,16 @@ vector<Letra> Conjuntoletras::getletras() const
   return myset;
 }
 
-int Conjuntoletras::scorepalabra(char letra)
+
+int Conjuntoletras::scoreletra(char letra)
 {
   int score = 0;
+  for (size_t i = 0; i < conjunto.size(); i++) {
+    if(letra==conjunto[i].getletra()){
+      score = conjunto[i].getpuntos();
+    }
+  }
+  return score;
 }
 
 void Conjuntoletras::setletra(Letra l)
@@ -170,6 +177,8 @@ istream & operator>>(istream & is, Conjuntoletras &conjunto){
 
     return is;
 }
+
+
 
 //
 // main de prueba de Letra y Conjuntoletras
