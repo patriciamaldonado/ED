@@ -1,17 +1,13 @@
-INC = .
-OBJ = .
-SRC = .
+INC = include
+OBJ = obj
+SRC = src
 BIN = bin
-CXX = g++
-CPPFLAGS = #-Wall -g
+CXX = g++ 
+CPPFLAGS = -std=c++11 #-Wall -g 
 
-
-all: $(BIN)/cantidadletras
-
-# ************ Generación de documentación ******************
-documentacion:
-	doxygen doc/doxys/Doxyfile
-
+all: cantidadletras letra
+	./$(BIN)/cantidadletras datos/spa.txt datos/letras.txt datos/salida.txt
+	./$(BIN)/letras datos/spa.txt datos/salida.txt 6 P
 	
 # ************ Compilación de módulos ************
 
@@ -40,15 +36,18 @@ $(OBJ)/diccionario.o : $(SRC)/diccionario.cpp
 $(OBJ)/bolsadeletras.o : $(SRC)/bolsadeletras.cpp
 	$(CXX) $(CPPFLAGS) -I./$(INC) -c -o $(OBJ)/bolsadeletras.o $(SRC)/bolsadeletras.cpp
 
+# ************ Ejecución ************
 
-# ************ Limpieza ************
-run : all
-	./$(BIN)/cantidadletras diccionario1.txt letras.txt salida.txt
 
-bolsa: $(BIN)/bolsadeletras
+
+cantidadletras : $(BIN)/cantidadletras
+	
 
 letra: $(BIN)/letras
+	
 
+
+# ************ Limpieza ************
 clean : mrproper
 	echo "Limpiando..."
 	rm -f $(OBJ)/*.o

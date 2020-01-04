@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
-#include "conjuntoletras.h"
-#include "diccionario.h"
+#include "../include/conjuntoletras.h"
+#include "../include/diccionario.h"
 //#include "bolsadeletras.h"
 
 

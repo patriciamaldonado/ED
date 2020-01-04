@@ -47,8 +47,7 @@ class Diccionario{
 	@param D: el objeto donde se realiza la lectura.
 	@return el flujo de entrada
 	**/
-	friend
-	istream & operator>>(istream & is,Diccionario &D);
+	friend istream & operator>>(istream & is,Diccionario &D);
 	/**
 	@brief Escribe en un flujo de salida un diccionario
 	@param os:flujo de salida
@@ -58,8 +57,6 @@ class Diccionario{
 	friend ostream & operator<<(ostream & os, Diccionario	&D);
 	int FrecLetra(const char & letra);
   void palabrasPosibles(char datos[],int n);
-	// Hacer una funcion damepuntuacion(string palabra) que compruebe la puntación de la palabra
-  // int puntuaPalabra(string palabra);
 	vector<string> getPalabrasFormadas();
 
 

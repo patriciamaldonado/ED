@@ -3,8 +3,9 @@
 #include <iterator>
 #include <fstream>
 #include <clocale>
-#include "conjuntoletras.h"
 #include <vector>
+#include "../include/conjuntoletras.h"
+
 
 using namespace std;
 
@@ -56,12 +57,6 @@ Letra::Letra(const char &l, const int &puntos, const int &repeticiones)
     this->puntos = puntos;
     repe = repeticiones;
   }
-}
-
-int Letra::score() const
-{
-
-  return puntos;
 }
 
 int Letra::repeticiones() const

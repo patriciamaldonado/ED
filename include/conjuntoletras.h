@@ -18,7 +18,7 @@ public:
 	Letra(const char &p);
 	Letra(const char & l, const int &puntos,const int &repeticiones);
 
-	int  score() const;
+
 	int  repeticiones() const;
 	void setletra(char l);
 	char getletra() const;
@@ -47,8 +47,6 @@ public:
 
 
 Conjuntoletras();
-
-
 vector<Letra> getletras() const;
 int scoreletra(char letra);
 void setletra(Letra l);
@@ -56,9 +54,6 @@ int size() const;
 Letra operator[] (const int x) const;
 friend ostream & operator<<(ostream & os, Conjuntoletras const &conjunto);
 friend istream & operator>>(istream & is, Conjuntoletras &conjunto);
-
-
-
 
 
 };

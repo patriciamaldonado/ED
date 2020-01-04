@@ -15,19 +15,15 @@ private:
 public:
 
 Bolsaletras();
-// Bolsaletras(Bolsaletras const & otra);
 Bolsaletras(int elemAleatorios,Conjuntoletras &conjunto);
 void setletraBolsa(const char l);
 char getletraBolsa(const int x) const;
 char getletraEnjuego(const int x) const;
-
-void letrasAleatorias(const int &numletras);
-// vector<string> posibilidades(const Diccionario & D); //palabras del diccionario que se pueden formar con esas letras
-// vector<string> mayorlongitud(); // palabras con mayor longitud
+// void letrasAleatorias(const int &numletras);
 int sizeVectorenJuego();
 int sizeVectorBolsa() const;
 friend ostream & operator<<(ostream & os, Bolsaletras const &b);
-// friend istream & operator>>(istream & is, Bolsaletras &b);
+
 
 };
 

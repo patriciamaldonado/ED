@@ -4,7 +4,8 @@
 #include <fstream>
 #include <cstring>
 #include <algorithm>
-#include "diccionario.h"
+#include "../include/diccionario.h"
+
 using namespace std;
 
 
@@ -176,7 +177,6 @@ void Diccionario::variacionSR(char datos[],int n, int r,int *index=NULL,int i=0)
 
 
 
-//frecuencia cada 3 letras
 
 // int main(int argc, char const *argv[]) {
 //

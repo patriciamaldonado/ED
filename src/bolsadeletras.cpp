@@ -1,9 +1,10 @@
 #include <iostream>
 #include <stdlib.h> /* srand, rand */
 #include <time.h>
-#include "bolsadeletras.h"
-#include "conjuntoletras.h"
 #include <fstream>
+#include "../include/bolsadeletras.h"
+#include "../include/conjuntoletras.h"
+
 
 Bolsaletras::Bolsaletras()
 {
@@ -11,14 +12,12 @@ Bolsaletras::Bolsaletras()
     letrasenjuego.clear();
 }
 
-// Bolsaletras::Bolsaletras(Bolsaletras const & otra){
-
-// }
-
 Bolsaletras::Bolsaletras(int elemAleatorios,Conjuntoletras &conjunto)
 {
     bolsa.clear();
     letrasenjuego.clear();
+    // Creamos un vector de vocales para que al menos siempre meta una vocal
+    vector<char> vocales{'a','e','i','o','u'};
 
    if(conjunto.size() > 0){
 
@@ -26,12 +25,14 @@ Bolsaletras::Bolsaletras(int elemAleatorios,Conjuntoletras &conjunto)
       bolsa.push_back(conjunto[i].getletra());
     }
     srand(time(0));
-    for (int i = 0; i < elemAleatorios; i++)
+    for (int i = 0; i < elemAleatorios-1; i++)
     {
         int aleatorio = rand() % bolsa.size();
         char l = tolower(bolsa[aleatorio]);
         letrasenjuego.push_back(l);
     }
+      int aleatorioVocal = rand() % vocales.size();
+      letrasenjuego.push_back(vocales[aleatorioVocal]);
  }
 }
 
@@ -49,17 +50,17 @@ char Bolsaletras::getletraBolsa(const int x) const
     }
 }
 
-void Bolsaletras::letrasAleatorias(const int &numletras)
-{
-    letrasenjuego.clear();
-    srand(time(0));
-    for (int i = 0; i < numletras; i++)
-    {
-        int aleatorio = rand() % bolsa.size();
-        char l = tolower(bolsa[aleatorio]);
-        letrasenjuego.push_back(l);
-    }
-}
+// void Bolsaletras::letrasAleatorias(const int &numletras)
+// {
+//     letrasenjuego.clear();
+//     srand(time(0));
+//     for (int i = 0; i < numletras; i++)
+//     {
+//         int aleatorio = rand() % bolsa.size();
+//         char l = tolower(bolsa[aleatorio]);
+//         letrasenjuego.push_back(l);
+//     }
+// }
 
 int Bolsaletras::sizeVectorenJuego(){
     return letrasenjuego.size();
@@ -81,25 +82,6 @@ ostream & operator<<(ostream & os, Bolsaletras const &b){
   return os;
 
 }
-
-
-// istream & operator>>(istream & is, Bolsaletras &b){
-// char letra;
-// int repe;
-// int score;
-//
-//     while(!is.eof()){
-//         is >> letra;
-//         is >> repe;
-//         is >> score;
-//         Letra l(tolower(letra),repe,score);
-//         b.setletraBolsa(l);
-//     }
-//
-//     return is;
-// }
-
-
 
 
 // int main(int argc, char const *argv[])
