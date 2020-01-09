@@ -8,8 +8,8 @@ using namespace std;
 
 static int cont = 0;
 
-solucion::solucion(){
-
+solucion::solucion()
+{
 }
 
 bool solucion::restaPosible(int a, int b)
@@ -91,7 +91,7 @@ solucion solucion::codigo(solucion sol, char oper, int i, int j)
     return s;
 }
 
-void cyl(solucion sol, int resultado, int tam, vector<int> el)
+void solucion::cyl(solucion sol, int resultado, int tam, vector<int> el)
 {
     if (tam == 1)
     {
@@ -101,13 +101,14 @@ void cyl(solucion sol, int resultado, int tam, vector<int> el)
             cont++;
         }
     }
-    else if (esta(sol.elementos, resultado))
-    {
-        mostrar(sol);
-        cont++;
-    }
-    else
-    {
+    //PARA OBTENER UNA SOLUCIÓN NO HACE FALTA ESTE CODIGO
+
+    // else if(esta(sol.elementos, resultado)){
+    //   mostrar(sol);
+    //   cont++;
+    // }
+    else if (cont < 1)
+    { //PARA OBTENER UNA SOLUCIÓN
         int operacion, i, j;
         solucion s;
         for (i = 0; i < tam; i++)
@@ -139,26 +140,68 @@ void cyl(solucion sol, int resultado, int tam, vector<int> el)
     }
 }
 
+int solucion::operator[](const int x) const
+{
+    return elementos[x];
+}
+
+int solucion::sizeElementos()
+{
+    return elementos.size();
+}
+
+void solucion::push_back(int num)
+{
+    elementos.push_back(num);
+}
+vector<int> solucion::getElementos()
+{
+    return elementos;
+}
+
 int main()
 {
     solucion v;
     int num = -1, resultado;
+    int ivector;
+    int objetivo;
+    srand (time(NULL));
+    int C [] = {1,2,3,4,5,6,7,8,9,10,25,50,75,100};
+    // Crear un vector con los valores a escoger
+    // Generar 6 nos aleatorios q seran los elementos del vector a coger
+    // Meterlos en v.elementos
 
-    while (num != 0)
+    for(int i=0; i<6; ++i)
     {
-        system("clear");
-        cout << "NUMEROS A OPERAR" << endl;
-        for (int i = 0; i < v.elementos.size(); i++)
-            cout << "| " << v.elementos[i] << " ";
-        cout << "|" << endl;
-        cout << "Introduce un número y pulsa enter (para dejar de meter numeros introduce 0)" << endl;
-        cin >> num;
-        if (num != 0)
-            v.elementos.push_back(num);
+        ivector = rand() % 14 ;
+        v.push_back(C[ivector]) ;
     }
+    cout << "Elementos introducidos: " << endl;
+    
+    for(int i=0; i<v.sizeElementos(); i++)
+        cout << "| " << v[i] << " ";
+        
+    cout << endl;
+    objetivo = rand() % 899+100 ;
+    // while (num != 0)
+    // {
+    //     system("clear");
+    //     cout << "NUMEROS A OPERAR" << endl;
+    //     for (int i = 0; i < v.sizeElementos(); i++)
+    //         cout << "| " << v[i] << " ";
+    //     cout << "|" << endl;
+    //     cout << "Introduce un número y pulsa enter (para dejar de meter numeros introduce 0)" << endl;
+    //     cin >> num;
+    //     if (num != 0)
+    //         v.push_back(num);
+    // }
 
-    cout << "Ahora introduce el resultado a conseguir" << endl;
-    cin >> resultado;
-    cyl(v, resultado, v.elementos.size(), v.elementos);
+    // cout << "Ahora introduce el resultado a conseguir" << endl;
+    // cin >> resultado;
+    resultado=objetivo;
+    cout << "Resultado a buscar: " <<resultado << endl;
+  
+
+    v.cyl(v, resultado, v.sizeElementos(), v.getElementos());
     cout << "SOLUCIONES ENCONTRADAS: " << cont << endl;
 }
